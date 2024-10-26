@@ -8,7 +8,6 @@ import chalk from 'chalk';
 import cors from 'cors';
 
 import authRouter from './routes/route-auth.js';
-import authRouter from "./routes/route-auth.js";
 import recipesRouter from "./routes/route-recipe.js"
 import ingredientsRouter from "./routes/route-ingredient.js"
 import favoritesRouter from "./routes/route-favorites.js"
@@ -36,8 +35,4 @@ app.use(express.urlencoded({ extended: true }));
 /* --------------------------------Routes--------------------------------*/
 
 app.use('/auth', authRouter);
-app.use('/receipes', recipesRouter);
-
-
-
-
+app.use('/recipes', recipesRouter);
