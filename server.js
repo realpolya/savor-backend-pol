@@ -8,7 +8,6 @@ import chalk from 'chalk';
 import cors from 'cors';
 
 import authRouter from './routes/route-auth.js';
-import authRouter from "./routes/route-auth.js";
 import recipesRouter from "./routes/route-recipe.js"
 import ingredientsRouter from "./routes/route-ingredient.js"
 import favoritesRouter from "./routes/route-favorites.js"
