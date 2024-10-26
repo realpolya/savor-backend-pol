@@ -21,9 +21,7 @@ const reviewSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model(
-  "Recipe",
-  new mongoose.Schema(
+export default mongoose.model("Recipe", new mongoose.Schema(
     {
       name: {
         type: String,
@@ -36,7 +34,7 @@ export default mongoose.model(
       author: {
         type: mongoose.Schema.Types.ObjectID,
         required: true,
-        ref: "user",
+        ref: "User",
       },
       ingredients: {
         type: Array,
@@ -48,12 +46,13 @@ export default mongoose.model(
       },
       holiday: {
         type: String,
+        required: true,
         enum: [
           "Not a Holiday",
           "Christmas",
           "Thanksgiving",
           "Easter",
-          "Holloween",
+          "Halloween",
         ],
       },
       image: {
