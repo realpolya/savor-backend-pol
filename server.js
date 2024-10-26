@@ -36,8 +36,4 @@ app.use(express.urlencoded({ extended: true }));
 /* --------------------------------Routes--------------------------------*/
 
 app.use('/auth', authRouter);
-app.use('/receipes', recipesRouter);
-
-
-
-
+app.use('/recipes', recipesRouter);
