@@ -1,8 +1,6 @@
 import mongoose from "mongoose";
 
-export default mongoose.model(
-  "Favorite",
-  new mongoose.Schema(
+export default mongoose.model("Favorites", new mongoose.Schema(
     {
       owner: {
         type: mongoose.Schema.Types.ObjectId,
@@ -10,10 +8,10 @@ export default mongoose.model(
         ref: "User",
       },
       recipe: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Array,
+        default: [],
         ref: "Recipe",
-      },
+      }
     },
     { timestamps: true }
-  )
-);
+));

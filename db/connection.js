@@ -1,0 +1,31 @@
+/* --------------------------------Imports--------------------------------*/
+
+import dotenv from 'dotenv';
+// import path from 'path'; - testing db folder
+// dotenv.config({ path: path.resolve(process.cwd(), '../.env') }); - testing db folder
+dotenv.config();
+
+import chalk from 'chalk';
+import mongoose from 'mongoose';
+
+/* --------------------------------Express & Mongoose--------------------------------*/
+
+mongoose.set("returnOriginal", false);
+
+if (!process.env.MONGODB_URI) {
+    console.log('MongoDB URI is undefined!')
+}
+
+mongoose.connect(process.env.MONGODB_URI);
+
+mongoose.connection.on('disconnected', () => {
+    console.log(chalk.bold("Disconnected from MongoDB"));
+});
+
+mongoose.connection.on('error', (err) => {
+    console.log(chalk.red(`MongoDB connection error: ${err}`));
+})
+
+/* --------------------------------Exports--------------------------------*/
+
+export default mongoose.connection;
