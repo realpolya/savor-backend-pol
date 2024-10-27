@@ -23,8 +23,6 @@ router.post('/', recipesController.createRecipe);
 router.put('/:recipeId',  verifyRecipeAuthor, recipesController.updateRecipe);
 //Delete Recipe
 router.delete('/:recipeId',  verifyRecipeAuthor, recipesController.deleteRecipe);
-// router.post('/', verifyReviewAuthor, controllers.createReview)
-
 
 /* --------------------------------Exports--------------------------------*/
 
