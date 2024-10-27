@@ -24,4 +24,4 @@ const verifyToken = (req, res, next) => {
 
 /* --------------------------------Exports--------------------------------*/
 
-export default verifyToken
+export default verifyToken;
