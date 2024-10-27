@@ -4,7 +4,6 @@ import { Router } from 'express';
 import verifyToken from '../middleware/verify-token.js'
 import {verifyRecipeAuthor} from '../middleware/verify-recipe-author.js'
 import * as recipesController from '../controllers/recipe.js';
-import {verifyReviewAuthor} from "../middleware/verify-review-author.js";
 
 /* --------------------------------Express & Mongoose--------------------------------*/
 
