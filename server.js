@@ -10,7 +10,7 @@ import cors from 'cors';
 import authRouter from './routes/route-auth.js';
 import recipesRouter from "./routes/route-recipe.js"
 //import ingredientsRouter from "./routes/route-ingredient.js"
-//import favoritesRouter from "./routes/route-favorites.js"
+import favoritesRouter from "./routes/route-favorite.js"
 
 
 /* --------------------------------Express & Mongoose--------------------------------*/
@@ -36,3 +36,4 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/auth', authRouter);
 app.use('/recipes', recipesRouter);
+app.use('/favorites', favoritesRouter);
