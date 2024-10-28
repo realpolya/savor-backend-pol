@@ -11,7 +11,7 @@ import authRouter from './routes/route-auth.js';
 import recipesRouter from "./routes/route-recipe.js"
 //import ingredientsRouter from "./routes/route-ingredient.js"
 //import favoritesRouter from "./routes/route-favorites.js"
-//import reviewsRouter from "./routes/route-reviews.js"
+
 
 /* --------------------------------Express & Mongoose--------------------------------*/
 
