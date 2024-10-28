@@ -3,7 +3,6 @@
 import { Router } from 'express';
 import verifyToken from '../middleware/verify-token.js'
 import * as favoritesController from '../controllers/favorite.js';
-import {getFavorites, removeRecipeFromFavorites} from "../controllers/favorite.js";
 /* --------------------------------Express & Mongoose--------------------------------*/
 
 const router = Router();
