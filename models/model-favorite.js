@@ -7,7 +7,7 @@ export default mongoose.model("Favorites", new mongoose.Schema(
         required: true,
         ref: "User",
       },
-      recipe: {
+      recipes: {
         type: Array,
         default: [],
         ref: "Recipe",

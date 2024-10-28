@@ -18,12 +18,15 @@ router.get('/recipe/:recipeId', recipesController.getSingleRecipe);
 // Signed in routes
 router.use(verifyToken); // checking that user is authenticated for all the actions below
 router.get('/my-recipes', recipesController.getUserRecipes);
+
 // Create Recipe
 router.post('/', recipesController.createRecipe);
+
 //update Recipe
 router.put('/:recipeId',  verifyRecipeAuthor, recipesController.updateRecipe);
+
 //Delete Recipe
-router.delete('/:recipeId',  verifyRecipeAuthor, recipesController.deleteRecipe);
+router.delete('/recipe/:recipeId',  verifyRecipeAuthor, recipesController.deleteRecipe);
 
 /* --------------------------------/Review routes--------------------------------*/
 router.post('/:recipeId/reviews',  recipesController.createReview)
