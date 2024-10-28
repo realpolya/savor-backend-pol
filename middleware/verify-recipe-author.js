@@ -18,8 +18,7 @@ const verifyRecipeAuthor = async (req, res, next) => {
         next();
 
     } catch (err) {
-
-        res.status(401).json({ err: "We have an issue" });
+        res.status(401).json({ message: err.message, stack: err.stack });
 
     }
 
