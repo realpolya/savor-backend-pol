@@ -126,8 +126,7 @@ export const deleteRecipe = async (req, res) => {
 export const deleteReview= async(req,res)=> {
     try{
         const recipe= await Recipe.findById(req.params.recipeId);// find recipe by id.
-        recipe.reviews.remove({_id:req.params.reviewId}) //array remove() prototype removes an embedded subdocument based on the provided object id {_id:req.params.reviewId})
-        console.log(recipe)
+        recipe.reviews.remove({_id:req.params.reviewId}) ;//array remove() prototype removes an embedded subdocument based on the provided object id {_id:req.params.reviewId})
         await recipe.save();
        res.status(200).json({message: 'Ok'});
     }catch(error){
