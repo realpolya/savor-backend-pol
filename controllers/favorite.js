@@ -3,6 +3,7 @@ import Favorites from "../models/model-favorite.js";
 import Recipe from "../models/model-recipe.js"
 
 /* --------------------------------GET Controllers--------------------------------*/
+
 export const getFavorites = async (req, res) => {
     try {
         const userId = req.user._id;
@@ -22,9 +23,8 @@ export const getFavorites = async (req, res) => {
     }
 }
 
-
-
 /* --------------------------------POST Controllers--------------------------------*/
+
 export const addToFavorites = async (req, res) => {
     try{
         const userId = req.user._id;
@@ -68,6 +68,7 @@ export const addToFavorites = async (req, res) => {
     }
 };
 /* --------------------------------PUT Controllers--------------------------------*/
+
 export const removeRecipeFromFavorites = async (req, res) => {
     try {
         const userId = req.user._id;
