@@ -1,6 +1,7 @@
 /* --------------------------------Imports--------------------------------*/
 
 import User from '../models/model-user.js';
+import Favorites from "../models/model-favorite.js";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
@@ -58,7 +59,8 @@ const signUp = async (req, res) => {
             hashedPassword: bcrypt.hashSync(req.body.password, SALT)
         })
 
-        // implement jwt
+        await Favorites.create({ owner: user._id });
+
         const token = getToken(user);
         res.status(201).json({ token });
 
