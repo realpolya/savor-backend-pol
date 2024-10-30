@@ -11,7 +11,8 @@ export const getAllRecipes = async (req, res) => {
     try {
         const recipes = await Recipe.find()
             .populate('author')
-            .populate ('ingredients', 'name') //needed to update
+            .populate('ingredients')
+            .populate('reviews.reviewer') // TODO:
         res.status(200).json(recipes)
     } catch (error) {
         console.log(error)
@@ -61,7 +62,7 @@ export const getUserRecipes = async (req, res) => {
  * @param ingredients Array of names of ingredients
  */
 async function saveIngredients(ingredients) {
-    console.log(ingredients)
+    console.log('ingrs are', ingredients)
     const ingredientsToSave = await Promise.all( // this makes sure it waits for all async calls in loop resolve and give results back;
         ingredients.map(async (ingredient) => {
             // check if ingredient exists
@@ -75,7 +76,7 @@ async function saveIngredients(ingredients) {
                 foundIngredient = new Ingredient({name: ingredient.trim()});
                 await foundIngredient.save();
             }
-            return foundIngredient._id
+            return foundIngredient
         })
     )
     return [...new Set(ingredientsToSave)];
@@ -87,6 +88,7 @@ export const createRecipe = async (req, res) => {
         const ingredients = req.body.ingredients;
 
         const ingredientsToSave = await saveIngredients(ingredients);
+        console.log('ingredients to save are', ingredientsToSave);
 
         const recipeToCreate = {
             name: req.body.name,
@@ -101,6 +103,7 @@ export const createRecipe = async (req, res) => {
         }
         ;
         const recipe = await Recipe.create(recipeToCreate);
+        console.log('recipe created', recipe);
         recipe._doc.author = req.user
         res.status(201).json(recipe);
     } catch (error) {
