@@ -11,8 +11,8 @@ export const getAllRecipes = async (req, res) => {
     try {
         const recipes = await Recipe.find()
             .populate('author')
-            .populate('ingredients')
-            .populate('reviews.reviewer') // TODO:
+            .populate('ingredients') 
+            .populate('reviews.reviewer')
         res.status(200).json(recipes)
     } catch (error) {
         console.log(error)
@@ -30,8 +30,8 @@ export const getSingleRecipe = async (req, res) => {
         const recipeId = req.params.recipeId
         const foundRecipe = await Recipe.findById(recipeId)
             .populate('author')
-            .populate('ingredients', 'name')
-        console.log('Fetched Recipe:', recipe);
+            .populate('ingredients')
+            .populate('reviews.reviewer')
         res.status(200).json(foundRecipe)
     } catch (error) {
         console.log(error)
@@ -101,7 +101,7 @@ export const createRecipe = async (req, res) => {
             holiday: req.body.holiday,
             image: req.body.image
         }
-        ;
+
         const recipe = await Recipe.create(recipeToCreate);
         console.log('recipe created', recipe);
         recipe._doc.author = req.user
@@ -127,6 +127,9 @@ export const createReview = async (req, res) => {
             text: req.body.text,
             rating: req.body.rating,
         }
+
+        console.log('adding review in back end', reviewToAdd);
+
         //push the reviews
         recipe.reviews.push(reviewToAdd);
         //save
