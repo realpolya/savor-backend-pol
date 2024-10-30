@@ -28,10 +28,12 @@ router.put('/:recipeId',  verifyRecipeAuthor, recipesController.updateRecipe);
 //Delete Recipe
 router.delete('/recipe/:recipeId',  verifyRecipeAuthor, recipesController.deleteRecipe);
 
-/* --------------------------------/Review routes--------------------------------*/
+/* --------------------------------reviews--------------------------------*/
+
 router.post('/:recipeId/reviews',  recipesController.createReview)
 router.put('/:recipeId/reviews/:reviewId', verifyReviewAuthor, recipesController.updateReview)
 router.delete('/:recipeId/reviews/:reviewId',verifyRecipeAuthor,recipesController.deleteReview)
+
 /* --------------------------------Exports--------------------------------*/
 
 export default router;
