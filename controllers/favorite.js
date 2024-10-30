@@ -14,7 +14,7 @@ export const getFavorites = async (req, res) => {
             }
         })
         if (!favorites) {
-            res.status(404).json({
+            return res.status(404).json({
                 message: "Favorites for User Not Found"
             })
         }
