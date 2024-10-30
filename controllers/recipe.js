@@ -11,6 +11,7 @@ export const getAllRecipes = async (req, res) => {
     try {
         const recipes = await Recipe.find()
             .populate('author')
+            .populate ('ingredients', 'name')
         res.status(200).json(recipes)
     } catch (error) {
         console.log(error)
@@ -28,6 +29,8 @@ export const getSingleRecipe = async (req, res) => {
         const recipeId = req.params.recipeId
         const foundRecipe = await Recipe.findById(recipeId)
             .populate('author')
+            .populate('ingredients', 'name')
+        console.log('Fetched Recipe:', recipe);
         res.status(200).json(foundRecipe)
     } catch (error) {
         console.log(error)
@@ -57,19 +60,24 @@ export const getUserRecipes = async (req, res) => {
  * @param ingredients Array of names of ingredients
  */
 async function saveIngredients(ingredients) {
-    const ingredientsToSave = await Promise.all( // this makes sure it waits for all async calls in loop resolve and give results back
+    console.log(ingredients)
+    const ingredientsToSave = await Promise.all( // this makes sure it waits for all async calls in loop resolve and give results back;
         ingredients.map(async (ingredient) => {
             // check if ingredient exists
-            let foundIngredient = await Ingredient.findOne({name: ingredient}) // should find it
+            // let foundIngredient = await Ingredient.findOne({name: ingredient.trim()}); // should find it
+            let foundIngredient = await Ingredient.findById(ingredient); // should find it
+            console.log('found ingr is', foundIngredient);
 
             // if it doesnt find it
             if (!foundIngredient) {
-                foundIngredient = await Ingredient.create({name: ingredient})
+                console.log('ingredient being created')
+                foundIngredient = new Ingredient({name: ingredient.trim()});
+                await foundIngredient.save();
             }
             return foundIngredient._id
         })
     )
-    return ingredientsToSave;
+    return [...new Set(ingredientsToSave)];
 }
 
 /* --------------------------------Recipe--POST Controller--------------------------------*/
@@ -90,7 +98,7 @@ export const createRecipe = async (req, res) => {
             holiday: req.body.holiday,
             image: req.body.image
         }
-
+        ;
         const recipe = await Recipe.create(recipeToCreate);
         recipe._doc.author = req.user
         res.status(201).json(recipe);
