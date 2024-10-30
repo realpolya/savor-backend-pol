@@ -38,12 +38,10 @@ export default mongoose.model(
         required: true,
         ref: "User",
       },
-      ingredients: [
-        {
-          type: mongoose.Schema.Types.ObjectId, // We need to reference the ingredient model if not there is no relationship
-          ref: "Ingredient",
-        },
-      ],
+      ingredients: [{
+        type: mongoose.Schema.Types.ObjectId, // We need to reference the ingredient model if not there is no relationship
+        ref: "Ingredient",
+      }],
       description: {
         type: String,
         required: true,
