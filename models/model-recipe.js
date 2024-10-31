@@ -19,13 +19,15 @@ const reviewSchema = new mongoose.Schema({
     required: true,
     enum: [1, 2, 3, 4, 5],
   },
-});
+},
+{ timestamps: true }
+);
 
 export default mongoose.model(
   "Recipe",
   new mongoose.Schema(
     {
-      name: {
+      name: { 
         type: String,
         required: true,
       },
