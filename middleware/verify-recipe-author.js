@@ -14,8 +14,8 @@ const verifyRecipeAuthor = async (req, res, next) => {
             return res.status(404).json({ message: "Recipe not found" });
         }
 
-        if (JSON.stringify(req.user._id) !== JSON.stringify(recipe.author)) {
-            return res.status(401).json({ error: "Unauthorized!"});
+        if (JSON.stringify(req.user._id) !== JSON.stringify(recipe.author._id)) {
+            return res.status(401).json({ error: "Unathourized - not recipe author!"});
         }
 
         next();

@@ -32,7 +32,7 @@ router.delete('/recipe/:recipeId',  verifyRecipeAuthor, recipesController.delete
 
 router.post('/:recipeId/reviews',  recipesController.createReview)
 router.put('/:recipeId/reviews/:reviewId', verifyReviewAuthor, recipesController.updateReview)
-router.delete('/:recipeId/reviews/:reviewId',verifyRecipeAuthor,recipesController.deleteReview)
+router.delete('/:recipeId/reviews/:reviewId',verifyReviewAuthor, recipesController.deleteReview)
 
 /* --------------------------------Exports--------------------------------*/
 
