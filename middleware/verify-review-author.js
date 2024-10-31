@@ -7,6 +7,8 @@ import Recipe from '../models/model-recipe.js';
 // compare logged in user to the review owner (PUT and DELETE routes)
 const verifyReviewAuthor = async (req, res, next) => {
 
+    console.log('Review author not verified')
+
     try {
 
         const recipe = await Recipe.findById(req.params.recipeId);
@@ -15,7 +17,7 @@ const verifyReviewAuthor = async (req, res, next) => {
             return JSON.stringify(req.params.reviewId) === JSON.stringify(review._id);
         });
 
-        if (JSON.stringify(req.user._id) !== JSON.stringify(review.reviewer)) {
+        if (JSON.stringify(req.user._id) !== JSON.stringify(review.reviewer._id)) {
             return res.status(401).json({ error: "Unauthorized!"});
         }
 
