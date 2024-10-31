@@ -30,7 +30,7 @@ export const getSingleRecipe = async (req, res) => {
         const recipeId = req.params.recipeId
         const foundRecipe = await Recipe.findById(recipeId)
             .populate('author')
-            .populate('ingredients') 
+            .populate('ingredients')
             .populate('reviews.reviewer')
         res.status(200).json(foundRecipe)
     } catch (error) {
