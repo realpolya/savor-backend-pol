@@ -11,6 +11,7 @@ const SALT = 12;
 const getToken = user => {
     return jwt.sign({
         username: user.username,
+        email: user.email,
         _id: user._id
     }, process.env.JWT_SECRET)
     
@@ -56,6 +57,7 @@ const signUp = async (req, res) => {
 
         user = await User.create({
             username: req.body.username,
+            email: req.body.email,
             hashedPassword: bcrypt.hashSync(req.body.password, SALT)
         })
 
