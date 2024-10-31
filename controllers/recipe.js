@@ -11,7 +11,7 @@ export const getAllRecipes = async (req, res) => {
     try {
         const recipes = await Recipe.find()
             .populate('author')
-            .populate ('ingredients', 'name')
+            .populate ('ingredients', 'name') //needed to update
         res.status(200).json(recipes)
     } catch (error) {
         console.log(error)
