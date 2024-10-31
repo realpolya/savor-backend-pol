@@ -12,6 +12,7 @@ import recipesRouter from "./routes/route-recipe.js"
 import ingredientsRouter from "./routes/route-ingredients.js"
 //import ingredientsRouter from "./routes/route-ingredient.js"
 import favoritesRouter from "./routes/route-favorite.js"
+import morgan from "morgan";
 
 
 /* --------------------------------Express & Mongoose--------------------------------*/
@@ -29,6 +30,7 @@ db.on('connected', () => {
 
 
 /* --------------------------------Middleware--------------------------------*/
+app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
