@@ -18,7 +18,7 @@ import morgan from "morgan";
 /* --------------------------------Express & Mongoose--------------------------------*/
 
 const app = express();
-const PORT = process.env.port || 3000;
+const PORT = process.env.PORT || 3000;
 db.on('connected', () => {
     console.clear();
     console.log(chalk.blue(`Connected to MongoDB ${db.name}.`));
