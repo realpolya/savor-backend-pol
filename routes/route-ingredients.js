@@ -1,17 +1,15 @@
 /* --------------------------------Imports--------------------------------*/
 
 import { Router } from 'express';
-import * as controllers from '../controllers/auth.js';
+import * as ingredientsController from '../controllers/ingredients.js';
 
 /* --------------------------------Express & Mongoose--------------------------------*/
 
 const router = Router();
 
-/* --------------------------------/auth routes--------------------------------*/
+/* --------------------------------/recipe routes--------------------------------*/
 
-// authentication
-router.post('/sign-in', controllers.signIn);
-router.post('/sign-up', controllers.signUp);
+router.get('/', ingredientsController.getAllIngredients);
 
 /* --------------------------------Exports--------------------------------*/
 
