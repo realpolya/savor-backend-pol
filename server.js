@@ -1,19 +1,17 @@
-// FORKED VERSION OF SAVOR
 /* --------------------------------Imports--------------------------------*/
+
 import dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
-import db from './db/connection.js'; // db = mongoose.connection
+import db from './db/connection.js';
 import chalk from 'chalk';
 import cors from 'cors';
+import morgan from "morgan";
 
 import authRouter from './routes/route-auth.js';
 import recipesRouter from "./routes/route-recipe.js"
 import ingredientsRouter from "./routes/route-ingredients.js"
-//import ingredientsRouter from "./routes/route-ingredient.js"
 import favoritesRouter from "./routes/route-favorite.js"
-import morgan from "morgan";
-
 
 /* --------------------------------Express & Mongoose--------------------------------*/
 
@@ -30,6 +28,7 @@ db.on('connected', () => {
 
 
 /* --------------------------------Middleware--------------------------------*/
+
 app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());

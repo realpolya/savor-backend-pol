@@ -4,7 +4,6 @@ import jwt from 'jsonwebtoken';
 
 /* --------------------------------Middleware Function--------------------------------*/
 
-
 const verifyToken = (req, res, next) => {
 
     try {

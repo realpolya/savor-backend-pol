@@ -4,10 +4,7 @@ import Recipe from '../models/model-recipe.js';
 
 /* --------------------------------Middleware Function--------------------------------*/
 
-// compare logged in user to the review owner (PUT and DELETE routes)
 const verifyReviewAuthor = async (req, res, next) => {
-
-    console.log('Review author not verified')
 
     try {
 

@@ -1,10 +1,10 @@
 /* --------------------------------Imports--------------------------------*/
+
 import Ingredient from '../models/model-ingredient.js'
 
 /* --------------------------------GET Controllers--------------------------------*/
 
-// returns all ingredients to client
-export const getAllIngredients = async (req, res) => {
+const getAllIngredients = async (req, res) => {
     // get all ingredients and return them
     try {
         const ingredients = await Ingredient.find();
@@ -17,3 +17,7 @@ export const getAllIngredients = async (req, res) => {
         });
     }
 };
+
+/* --------------------------------Exports--------------------------------*/
+
+export { getAllIngredients }
