@@ -1,8 +1,6 @@
 /* --------------------------------Imports--------------------------------*/
 
 import dotenv from 'dotenv';
-// import path from 'path'; //testing db folder
-// dotenv.config({ path: path.resolve(process.cwd(), '../.env') }); //testing db folder
 dotenv.config();
 
 import chalk from 'chalk';

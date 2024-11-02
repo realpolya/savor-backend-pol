@@ -24,11 +24,11 @@ const insertData = async () => {
 
 // insertData();
 
-// const showIngredients = async () => {
-//     const ingrs = await Ingredient.find();
-//     console.log(ingrs)
-//     await db.close();
-// }
+const showIngredients = async () => {
+    const ingrs = await Ingredient.find();
+    console.log(ingrs)
+    await db.close();
+}
 
 // showIngredients();
 

@@ -9,6 +9,7 @@ import jwt from 'jsonwebtoken';
 
 const SALT = 12;
 const getToken = user => {
+    console.log(process.env.JWT_SECRET)
     return jwt.sign({
         username: user.username,
         email: user.email,
@@ -83,7 +84,6 @@ const signIn = async (req, res) => {
             return res.status(400).json({ error: 'Invalid login' });
         }
 
-        // jwt
         const token = getToken(user);
         return res.status(200).json({ token });
 

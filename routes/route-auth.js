@@ -9,7 +9,6 @@ const router = Router();
 
 /* --------------------------------/auth routes--------------------------------*/
 
-// authentication
 router.post('/sign-in', controllers.signIn);
 router.post('/sign-up', controllers.signUp);
 

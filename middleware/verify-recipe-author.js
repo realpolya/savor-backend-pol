@@ -4,7 +4,6 @@ import Recipe from '../models/model-recipe.js';
 
 /* --------------------------------Middleware Function--------------------------------*/
 
-// compare logged in user to the recipe owner (PUT and DELETE routes)
 const verifyRecipeAuthor = async (req, res, next) => {
 
     try {
